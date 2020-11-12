@@ -1,0 +1,626 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta author="Kacper Gregorowicz">
+        <link rel="stylesheet" type="text/css" href="./css/w3.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <title>Kryptografia - kiedyś i dziś</title>
+    </head>
+    <body>
+        <div class="w3-sidebar w3-bar-block w3-border-right w3-animate-left w3-dark-gray" style="display:none" id="mySidebar">
+            <button onclick="w3_close()" class="w3-bar-item w3-large">Zamknij &times;</button>
+            <a href="#basics" class="w3-bar-item w3-button">Podstawowe pojęcia</a>
+            <a href="#basic-ciphers" class="w3-bar-item w3-button">Proste szyfry</a>
+            <a href="#caesar-cipher" class="w3-bar-item w3-button">Szyfr Cezara</a>
+            <a href="#rail-fence-cipher" class="w3-bar-item w3-button">Szyfr płotkowy</a>
+            <a href="#vigenere-cipher" class="w3-bar-item w3-button">Szyfr Vigenère'a</a>
+            <a href="#cryptography-history" class="w3-bar-item w3-button">Kryptografia w historii</a>
+            <a href="#skytale" class="w3-bar-item w3-button">Skytale</a>
+            <a href="#important-people" class="w3-bar-item w3-button">Ważne osoby</a>
+            <a href="#room40" class="w3-bar-item w3-button">Room 40</a>
+            <a href="#enigma" class="w3-bar-item w3-button">Enigma</a>
+            <a href="#modern-cryptography" class="w3-bar-item w3-button">Współczesna kryptografia</a>
+            <a href="#symmetric-encryption" class="w3-bar-item w3-button">Szyfrowanie symetryczne</a>
+            <a href="#asymmetric-encryption" class="w3-bar-item w3-button">Szyfrowanie asymetryczne</a>
+            <a href="#hybrid-encryption" class="w3-bar-item w3-button">Szyfrowanie hybrydowe</a>
+            <a href="#hash" class="w3-bar-item w3-button">Funkcja haszująca</a>
+            <a href="#digital-signature" class="w3-bar-item w3-button">Podpis cyfrowy</a>
+            <a href="#about" class="w3-bar-item w3-button">O stronie</a>
+            <a href="#bibliography" class="w3-bar-item w3-button">Biblografia</a>
+            <a href="#software" class="w3-bar-item w3-button">Programy i technologie</a>
+            <a href="#pictures" class="w3-bar-item w3-button">Użyte zdjęcia</a>
+        </div>
+        <div class="front-page-bg"></div> 
+        <div class="front-page-txt">
+            <h1>Kryptografia</h1>
+            <h2>Kiedyś i dziś</h2>
+            <a href="#basics" class="btn">Rozpocznij!</a>
+        </div>
+        <button class="menu-btn" onclick="w3_open()">Menu</button>
+        <div class="section-topic">
+            <div class="container" id="basics">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>Co to kryptografia i podstawowe pojęcia</h1>
+                        <p>Zacznijmy od tego czym tak naprawdę jest kryptografia. <br />
+                        Jest to jedna z dziedzin kryptologii która dzieli się na:</p>
+                        <ul>
+                            <li><b>kryptografię</b> - dziedzinę zajmującą się utajnianiem wiadomości.</li>
+                            <li><b>kryptoanalizę</b> - dziedzinę zajmującą się deszyfrowaniem wiadomości bez tzw. <b>klucza.</b></li>
+                        </ul>
+                        <p><b>Szyfrowaniem</b> nazywamy proces przekształcania tekstu jawnego na tekst tajny.</p>
+                        <p>Dodajmy jeszcze kilka podstawowych pojęć:</p>
+                        <ul>
+                            <li><b>Szyfrogram, kryptogram</b> - jest to tekst tajny, niezrozumiały.</li>
+                            <li><b>Klucz</b> - informacja umożliwiająca wykonanie danej operacji kryptograficznej.</li>
+                            <li><b>Deszyfrowanie, dekryptaż</b> - przekształcanie kryptogramu na tekst jawny, zrozumiały.</li>
+                        </ul>
+                        <p>Jeśli, któraś z tych uproszczonych definicji jest nadal niezrozumiała, mam nadzieję, że wytłumaczą ją następujące przykłady.</p>
+                        <p>W razie gdy zapomnisz jednej z definicji, możesz łatwo tu wrócić korzystając z menu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-topic">
+            <div class="container" id="basic-ciphers">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>Proste szyfry</h1>
+                    </div>
+                </div>
+                <div id="caesar-cipher" class="row">
+                    <div class="col-sm-6 top-buffer">
+                        <h3>Szyfr Cezara</h3>
+                        <p>Jest to jedna z najprostszych technik szyfrowania. 
+                        Był on używany do utajniania ważnej korespondencji przez Juliusza Cezara.
+                        Jest to rodzaj <b>szyfru podstawieniowego</b> - każdy znak tekstu jawnego jest zamieniany na inny znak szyfrogramu.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/cezar.jpg">
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p>Zasada działania szyfru jest bardzo prosta. Każdą literę zastępujemy inną oddaloną o stałą liczbę miejsc w alfabecie.</p>
+                        <p>Jak widać na rysunku obok, każda litera z pierwszego ciągu znaków, ma swój odpowiednik w drugim.
+                        Ostatnim literom w górnym ciągu odpowiadają początkowe litery w dolnym ciągu - alfabet zawija się.</p>
+                        <p>W naszym przypadku klucz wynosi 3 - musimy zastąpić daną literę trzecią następującą po niej literą w alfabecie.</p>
+                        <p>Aby odczytać zaszyfrowaną wiadomość należy znać klucz i dokonać operacji odwrotnej (przesunąć ciąg znaków w przeciwną stronę).</p>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <img class="img-fluid" src="images/szyfrCezara.png">
+                    </div>
+                    <div class="col-sm-12">
+                        <p>Szyfr ten nie zapewnia żadnego bezpieczeństwa, ponieważ tekst tajny jest bardzo prosty do odszyfrowania, nawet bez użycia komputera.</p>
+                        <p>Długość klucza jest to najprościej mówiąc ilość możliwych kombinacji klucza.
+                        W naszym przypadku, aby odszyfrować wiadomość wystarczyłoby sprawdzić wszystkie 25 kombinacji. 
+                        Tego typu metodę nazywamy <b>atakiem brute force</b>, która opiera się na sprawdzeniu wszystkich możliwych kombinacji klucza.</p>
+                        <br />
+                        <p>Zaszyfruj własną wiadomość (bez polskich znaków)</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <form>
+                            <div class="form-group">
+                                <label for="input-caesar">Wejście:</label>
+                                <input type="text" class="form-control" id="input-caesar">
+                                <label for="key-caesar">Klucz:</label>
+                                <select class="form-control" id="key-caesar">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                    <option>21</option>
+                                    <option>22</option>
+                                    <option>23</option>
+                                    <option>24</option>
+                                    <option>25</option>
+                                    <option>26</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Wyjście:</p>
+                        <p id="output-caesar"></p>
+                    </div>
+                    <div class="col-sm-12 cipher-buttons">
+                        <a onclick="caesarCipherEncrypt()" class="btn btn-success">Zaszyfruj</a>
+                        <a onclick="caesarCipherDecrypt()" class="btn btn-primary">Odszyfruj</a>
+                    </div>
+                </div>
+                <div id="rail-fence-cipher" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Szyfr płotkowy</h3>
+                        <p>Jest to jeden z przykładów <b>szyfru przestawieniowego</b> - tekst tajny zawiera wszystkie litery tekstu jawnego, tylko w zmienionej kolejności według określonego schematu.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Aby zaszyfrować wiadomość, każdą literę tekstu jawnego należy zapisać w odpowiedniej linijce. 
+                        Zaczynając u góry stopniowo schodząc każdym znakiem w dół aż do ostatniego wiersza.
+                        Następnie robimy to samo tylko, że w górę do pierwszego wiersza. 
+                        Czynność powtarzamy aż do wykorzystania wszystkich liter.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <table>
+                            <tr>
+                                <td>S</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>Ł</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td> </td>
+                                <td>Z</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>P</td>
+                                <td> </td>
+                                <td>O</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>W</td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td> </td>
+                                <td> </td>
+                                <td>Y</td>
+                                <td> </td>
+                                <td>R</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>T</td>
+                                <td> </td>
+                                <td>O</td>
+                                <td> </td>
+                               <td> </td>
+                            </tr>
+
+                            <tr>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>F</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>K</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Z tekstu jawnego usunęliśmy wszystkie odstępy. Jak widać ułożenie liter przypomina górę płotu.</p>
+                        <p>Teraz aby stworzyć kryptogram wystarczy odczytać tekst linijka po linijce, tworząc jeden ciąg znaków.</p>
+                        <p>W naszym przypadku jest to: SŁYZPOWYRTOFK</p>
+                        <p>Aby odczytać szyfrogram musimy znać technikę szyfrowania i klucz. Jeśli je znamy, możemy odtworzyć siatkę i wypełnić ją poprawnie literami.</p>
+                    </div>
+                </div>
+                <div id="vigenere-cipher" class="row">
+                    <div class="col-sm-6 top-buffer">
+                        <h3>Szyfr Vigenère'a</h3>
+                        <p>Jest to przykład <b>polialfabetycznego szyfru podstawieniowego</b> 
+                        - w różny sposób podstawiane są kolejne litery tekstu.</p>
+                        <p>Błędnie nazwa szyfru pochodzi od francuskiego dyplomaty Blaise de Vigenère. 
+                        Szyfr po raz pierwszy został opisany przez Giovana Batista Belaso w 1553r.</p>
+                        <p>Działanie szyfru wykorzystuje następującą tablicę, zwaną <i>tabula recta.</i></p>
+                        <p>Jak możemy zauważyć, wiersze w tablicy odpowiadają poznanemu przez nas wcześniej Szyfrowi Cezara. 
+                        Każdy wiersz ma inne przesunięcie. Jeśli chcemy zaszyfrować wiadomość musimy ustalić słowo kluczowe, 
+                        które jest tajne.</p>
+                        <p>Nasz klucz: TABULA</p>
+                        <p>Załóżmy, że chcemy zaszyfrować tekst: KRYPTOGRAFIA</p>
+                        <p>Widząc, że nasze słowo kluczowe jest krótsze niż tekst jawny, 
+                        powtarzamy je, aż będzie miało tyle samo znaków.</p>
+                        <p>KRYPTOGRAFIA<br />TABULATABULA</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/tabula.png">
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Teraz, szyfrujemy wiadomość w następujący sposób:</p>
+                        <ol>
+                            <li>Patrzymy na pierwszą literę tekstu jawnego i w której znajduje się kolumnie.</li>
+                            <li>Patrzymy na pierwszą literę słowa kluczowego i w którym znajduje się wierszu.</li>
+                            <li>Patrzymy w którym miejscu wiersz z kolumną “przecinają się”.</li>
+                            <li>Litera na przecięciu jest literą szyfrogramu.</li>
+                            <li>Przechodzimy do następnej litery.</li>
+                            <li>Postępujemy analogicznie aż do zaszyfrowania całego tekstu.</li>
+                        </ol>
+                        <p>Wynik z szyfrowania słowa KRYPTOGRAFIA kluczem TABULA: DRZJEOZRBZTA</p>
+                        <p>Litera tekstu jawnego może wyznaczać kolumnę, słowa kluczowego wiersz i na odwrót. Wynik będzie dalej taki sam.</p>
+                        <p>Gdy znamy słowo kluczowe i szyfrogram, możemy spokojnie odszyfrować tekst, postępując w sposób podobny.</p>
+                        <p>Szyfr ten był używany aż do XX wieku. Gwarantował dobre zabezpieczenie i był prosty w użyciu.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/tabulaprzyklad.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-topic">
+            <div class="container" id="cryptography-history">
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h1>Kryptografia w historii</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <p>Kryptologia jest stosunkowo nową dziedziną nauki. 
+                        Głębsze jej zgłębianie i prowadzenie badań zaczęło się około 100 lat temu. 
+                        Jednak okazuje się, że kryptografia była używana od dawien dawna.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Jedną z najprostszych form kryptografii był zwykły tekst, ponieważ wielu ludzi nie potrafiło czytać ani pisać.
+                        Samo słowo pochodzi z greckich słów <i>kryptós</i> co oznacza ukryty i <i>graphein</i> co oznacza pisać.</p>
+                        <p>Pierwsze znane zastosowanie kryptografii pochodzi aż z 1900 r. p.n.e. 
+                        z jednego z egipskich grobowców. Niektóre hieroglify wyryte na ścianie różniły się od innych powszechnie używanych znaków. 
+                        Najczęściej uważa się, że miały one zaintrygować i stworzyć tajemniczą otoczkę. 
+                        Jednak istnieje możliwość, że mogły ukrywać jakąś wiadomość.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/hieroglify.jpg">
+                    </div>
+                </div>
+                <div id="skytale" class="row">
+                    <div class="col-sm-6 top-buffer">
+                        <h3>Skytale</h3>
+                        <p>W starożytnej Grecji była stosowana metoda szyfrowania o nazwie Skytale. 
+                        Polegała ona na nawinięciu na kij paska pergaminu. Następnie zapisywano na nim tekst. 
+                        Po odwinięciu paska wiadomość była nieczytelna.</p>
+                        <p>Aby odczytać szyfrogram należało posiadać kij takich samych wymiarów jak ten użyty to utajnienia wiadomości.</p>
+                        <p>Ta technika najczęściej była używana przez Spartan, ponieważ była prosta w użyciu co było ważne na polu bitwy.</p>
+                        <p>Niestety pasek pergaminu z tekstem wskazywał na to jaka metoda została użyta do zaszyfrowania wiadomości, 
+                        przez co można było złamać to zabezpieczenie.</p>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <img class="img-fluid top-buffer" src="images/skytale.png">
+                    </div>
+                </div>
+                <div id="important-people" class="row top-buffer">
+                    <div class="col-sm-6 top-buffer">
+                        <h3>Ważne osoby</h3>
+                        <p>Pierwszymi osobami które systematycznie dokumentowały metody kryptoanalizy byli Arabowie.
+                        Arabski matematyk - Al-Kindi napisał książkę pod tytułem <i>"Risalah fi Istikhraj al-Mu'amma"</i>, 
+                        w której opisał jedne z pierwszych metod kryptoanalizy (około 800r.).</p>
+                        <p>Pierwszy znany przykład <b>szyfru homofonicznego</b> został użyty przez Księcia Mantuy w początkach XV w.
+                        Szyfr ten zastępuje każdą literę kilkoma symbolami w zależności od częstotliwości występowania danej litery w tekście jawnym.</p>
+                        <p>Edgar Allan Poe - amerykański pisarz. Dodał ogłoszenie w gazecie <i>"Alexander's Weekly (Express) Messenger"</i> 
+                        w którym poprosił o przesyłanie szyfów, po czym rozwiązał prawie wszystkie z nich. 
+                        Zobaczył zainteresowanie w tematyce kryptografii, po czym napisał opowiadanie <i>“The Gold-Bug” (1843</i>), 
+                        w którym kryptoanaliza grała znaczącą rolę.</p>
+                    </div>
+                    <div class="col-sm-5">
+                        <img class="img-fluid" src="images/goldbug.jpg">
+                        <p style="text-align: center"><i>"The Gold-Bug"</i></p>
+                    </div>
+                </div>
+                <div id="room40" class="row top-buffer">
+                    <div class="col-sm-6 top-buffer">
+                        <h3>Room 40</h3>
+                        <p>Room 40 - komórka dekryptażu Brytyjskiego Departamentu Wywiadu Marynarki Wojennej z okresu I wojny światowej.<p> 
+                        <p>Jedne z jej największych osiągnięć to  rozpoznanie pozycji niemieckich okrętów przed bitwą jutlandzką i i rozszyfrowanie telegramu Zimmermanna, 
+                        co przyspieszyło włączenie się Stanów Zjednoczonych do wojny po stronie ententy.</p>
+                    </div>
+                    <div class="col-sm-5">
+                        <img class="img-fluid" src="images/room40.jpg">
+                    </div>
+                </div>
+                <div id="enigma" class="row top-buffer">
+                    <div class="col-sm-6 top-buffer">
+                        <h3>Enigma</h3>
+                        <p>Enigma - niemiecka maszyna szyfrująca. Została skonstruowana przez niemieckiego inżyniera Artura Scherbiusa, 
+                        który od 1918 roku produkował ją w celach komercyjnych. 
+                        Z czasem wiele instytucji państwowych różnych krajów zaczęło z niej korzystać. 
+                        W szczególności służby państwowe, wywiadowcze i siły zbrojne Niemiec.</p>
+                        <p>Maszyna była urządzeniem elektromechanicznym, 
+                        czyli korzystała z prądu jak i elementów mechanicznych. Główne jej elementy to:</p>
+                        <ul>
+                            <li>26 znakowa klawiatura</li>
+                            <li>panel z lampkami</li>
+                            <li>łącznica kablowa</li>
+                            <li>trzy lub więcej osadzonych na jednej osi wirników</li>
+                            <li>mechanizm obrotowy</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="img-fluid" src="images/enigma2.jpg">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Po naciśnięciu klawisza obwód elektryczny zamyka się i sygnał wędruje do łącznicy kablowej, 
+                        która umożliwiała zamianę dwóch liter miejscami. Następnie prąd płynie do walca wejściowego, 
+                        później przez kilka wirników aż do reflektora. Sygnał zostaje zwrócony przez mechanizm, 
+                        inną drogą do momentu przejścia przez łącznicę. Stamtąd sygnał wędruje do mechanizmu zapalającego lampkę.</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <img class="img-fluid" src="images/przebieg-pradu.png">
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Po każdym wciśnięciu klawisza, jeden lub więcej wirników obracało się, co zmieniało drogę sygnału a ostatecznie otrzymywaną literę szyfrogramu.</p>
+                        <p>Ten typ szyrfu jest nam już znany. Jest to polialfabetyczny szyfr podstawieniowy.</p>
+                        <p>Aby pomyślnie przekazywać wiadomości, maszyna nadawcza i odbiorcza musiały być identycznie skonfigurowane.</p>
+                        <p>Klucz zawierał następujące dane:</p>
+                        <ul>
+                            <li>kolejność i typ wirników</li>
+                            <li>początkowa pozycja wirników</li>
+                            <li>ustawienie wirników - pozycja w jakiej należało ustawić pierścienie alfabetyczne w zależności od okablowania wirników</li>
+                            <li>ustawienie łącznicy kablowej</li>
+                        </ul>
+                        <p>Oczywiście musiał być używany ten sam model maszyny.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/wirniki.png">
+                        <p style="text-align: center">Wirniki</p>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p>W grudniu 1932r. Marianowi Rejewskiemu - 
+                        polskiemu matematykowi i kryptologowi udało się rozwiązać szyfr Engimy.</p>
+                        <p>Polacy opracowywali efektywne metody dekryptażu, wobec ciągle udoskonalanych maszyn Niemców.</p>
+                        <p>Pod koniec wojny prawie cała korespondencja niemiecka zapisana przy użyciu enigmy,
+                        została odczytana przez aliantów.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/rejewski.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-topic">
+            <div class="container top-buffer" id="modern-cryptography">
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h1>Współczesna kryptografia</h1>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Obecnie każdy z nas w jakimś stopniu korzysta z zabezpieczeń, które oferuje kryptografia. 
+                        Wiele serwisów i usług często korzysta z szyfrowania:
+                        Połączenia z wieloma stronami, wysyłane maile, wiadomości w różnych komunikatorach, 
+                        sieci Wi-Fi, dane na dyskach w chmurze itd.</p>
+                        <p>Szyfrowanie dzieli się na:</p>
+                        <ul>
+                            <li>szyfry symetryczne</li>
+                            <li>szyfry asymetryczne</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="symmetric-encryption" class="row">
+                    <div class="col-sm-12">
+                        <h3>Szyfrowanie symteryczne</h3>
+                        <p>Metody szyfrowania symetrycznego są znane od bardzo dawna (np. szyfr Cezara) opierają się na tym, 
+                        że zarówno do zaszyfrowania jak i odszyfrowania wymagany jest ten sam klucz. Klucz ten musi być tajny i znany przez nadawcę jak i odbiorcę.</p>
+                        <p>Jest to wadą tej metody, ponieważ obie strony przed nawiązaniem komunikacji muszą wcześniej wymienić się kluczem przez pewien bezpieczny kanał, 
+                        który niestety może być podatny na różne ataki.</p>
+                    </div>
+                    <div class="col-sm-12 text-center top-buffer">
+                        <img class="center-block" src="images/symetryczne.gif">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Plusem korzystania z algorytmów symetrycznych jest często większa wydajność od asymetrycznych. Można szybciej i łatwiej, zabezpieczać i odczytywać dane.</p>
+                        <p>Przykłady zastosowania metod symetrycznych:</p>
+                        <ul>
+                            <li>szyfrowanie prywatnych plików na dysku</li>
+                            <li>aplikacja przechowująca hasła</li>
+                            <li>ochrona danych w zamkniętych systemach bankowych</li>
+                        </ul>
+                        <p>Popularne szyfry symetryczne:</p>
+                        <ul>
+                            <li>AES</li>
+                            <li>DES</li>
+                            <li>Blowfish</li>
+                            <li>Twofish</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="asymmetric-encryption" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Szyfrowanie asymteryczne</h3>
+                        <p>W tego typu metodach szyfrowania nadawca jak i odbiorca posiadają parę kluczy.
+                        Każdy z nich posiada klucz publiczny i klucz prywatny.</p>
+                        <p>Ten pierwszy może być udostępniony publicznie bez strat względem bezpieczeństwa. 
+                        Klucza prywatnego nie da się łatwo odtworzyć na podstawie publicznego.</p>
+                        <p>Algorytmy używane w tego typu kryptografii wykorzystują tak zwane operacje jednokierunkowe - 
+                        łatwo je przeprowadzić w jedną stronę, ale już ciężko wykonać operację odwrotną. 
+                        Np. mnożenie bardzo dużych liczb nie sprawia żadnego problemu, natomiast dużo trudniej jest rozłożyć iloczyn na nieznane czynniki.</p>
+                        <p>Klucz publiczny służy do zaszyfrowania informacji, natomiast prywatny do jej odczytu.</p>
+                        <p>Nadawca używa klucza publicznego odbiorcy, aby zaszyfrować wiadomość.
+                        Następnie odbiorca używa swojego klucza prywatnego by odczytać wiadomość.</p>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <img class="img-fluid" src="images/asymetryczne1.png">
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <img class="img-fluid" src="images/asymetryczne2.png">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Zalety tego typu metod to wyższy poziom bezpieczeństwa niż metody symetryczne, jak i większa wygoda w korzystaniu.</p>
+                        <p>Jednak wadą jest mniejsza wydajność, ponieważ wymagany jest większy nakład pracy do zaszyfrowania i odszyfrowania informacji.</p>
+                        <p>W przypadku dużej ilości przetwarzanych danych algorytmy asymetryczne nie sprawdzają się.</p>
+                        <p>Przykłady zastosowania metod asymetrycznych:</p>
+                        <ul>
+                            <li>szyfrowanie korespondencji elektronicznej</li>
+                            <li>SSL/TLS - protokół szyfrujący połączenie między przeglądarką a serwerem</li>
+                            <li>HTTPS - protokół służący do bezpiecznego przesyłania danych w sieci www, często używany w połączeniu z SSL/TLS</li>
+                            <li>cyfrowe podpisywanie transakcji lub dokumentów</li>
+                        </ul>
+                        <p>Popularne szyfry asymetryczne:</p>
+                        <ul>
+                            <li>RSA</li>
+                            <li>DSA</li>
+                            <li>Diffie-Hellman</li>
+                            <li>XTR</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="hybrid-encryption" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Szyfrowanie hybrydowe</h3>
+                        <p>Polega ono na połączeniu obu wcześniej wymienionych metod. 
+                        Korzysta z bezpieczeństwa szyfrowania asymetrycznego, jak i z wydajności szyfrowania symetrycznego.</p>
+                        <p>Dane zostają zaszyfrowane metodą symetryczną, 
+                        następnie klucz zostaje zaszyfrowany kluczem publicznym odbiorcy. 
+                        Adresat po otrzymaniu wiadomości używając swojego klucza prywatnego, będzie mógł uzyskać dostęp do informacji.</p>
+                        <p>Oczywiście wszystkie wymienione wyżej metody kryptograficzne, są wykonywane przez komputer, 
+                        jak i różne aplikacje, w taki sposób, że często nie mamy pojęcia o ich istnieniu.</p>
+                    </div>
+                </div>
+                <div id="hash" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Funkcja haszująca (ang. Hash Function)</h3>
+                        <p>Funkcja ta zmienia dany tekst w specjalny ciąg znaków składający się z cyfr i liter. 
+                        Nie ważne czy dane wprowadzone zajmują dwie strony czy dwa słowa, wynik zawsze będzie tej samej długości.</p>
+                        <p>3 najważniejsze cechy dobrych funkcji haszujących:</p>
+                        <ul>
+                            <li>Każdy wynik musi być unikatowy. Nie może być możliwe otrzymanie dwóch takich samych wyników używając różnych danych wejściowych. 
+                            Natomiast te same dane wejściowe muszą zwracać ten sam wynik.</li>
+                            <li>Funkcja haszująca musi szybko zwracać wynik. Jednak za szybkie funkcje mogą świadczyć o małym poziomie skomplikowania, 
+                            co może być uszczerbkiem na bezpieczeństwie.</li>
+                            <li>Musi być bezpieczna. Nie może być możliwe ustalenie danych wejściowych na podstawie wyniku funkcji. 
+                            Najmniejsza zmiana danych wejściowych powinna spowodować dużą zmianę wyniku.</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 top-buffer text-center">
+                        <img class="img-fluid" src="images/hash.png">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Zobaczyć Matematykę haszowane funkcją SHA-1:<br />5dc25b2590a67347eff256194e916567c2016503</p>
+                        <p>zobaczyć matematykę haszowane funkcją SHA-1:<br />38562ff91c8df53ff699dd608493dd7fad473f5d</p>
+                        <p>Jak widać oba wyniki mają po 40 znaków i są zupełnie inne, 
+                        chociaż dane wejściowe różnią się tylko wielkością pierwszych liter słów.</p>
+                        <p>Haszowanie różni się od metod szyfrowania tym, że możemy wykonać operację tylko w jedną stronę. 
+                        Gdzie w szyfrowaniu zaszyfrowana wiadomość zostaje odszyfrowana przez odbiorcę przy użyciu klucza.</p>
+                        <p>W postaci wyników haszowania często przechowywane są hasła w bazach danych. Gdy użytkownik spróbuje się zalogować, 
+                        jego hasło zostaje zhaszowane i porównane do wyników w bazie danych.<br/><br/></p>
+                        <p><b>Sól (ang. salt)</b> - są to dane losowe dodawane do hasła podczas obliczania funkcji haszującej.</p>
+                        <p>Hasło: Matematyka123</p>
+                        <p>Sól: !dg0-a)</p>
+                    </div>
+                    <div class="col-sm-12 top-buffer text-center">
+                        <img class="img-fluid" src="images/salt.png">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Sól najczęściej przechowywana jest jawnie na serwerze aby strona wiedziała czego użyć do danego loginu.</p>
+                        <p>Chociaż nie jest ona w żaden sposób ukryta, zabezpiecza ona przed <b>atakami słownikowymi</b>. 
+                        W takim ataku używany jest zbiór słów np. języka polskiego lub listy popularnych haseł. Następnie testowane są różne kombinacje.</p>
+                    </div>
+                </div>
+                <div id="digital-signature" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Podpis cyfrowy</h3>
+                        <p>Podpisy cyfrowe służą bezpiecznemu przeprowadzaniu transakcji internetowych.
+                        Dzięki nim można potwierdzić tożsamość autora informacji cyfrowych (np. dokumentów, wiadomości e-mail, transakcji).</p>
+                        <p>Podpisy cyfrowe gwarantują:</p>
+                        <ul>
+                            <li>Autentyczność - jesteśmy pewni, że osoba podpisująca jest tym za kogo się podaje.</li>
+                            <li>Integralność - gwarancja, że treść nie została zmieniona od momentu podpisania.</li>
+                            <li>Brak możliwości odrzucenia - po podpisaniu autor nie może zaprzeczyć podpisania dokumentu, ponieważ autentyczność pozwala ustalić, że to on podpisał dokument.</li>
+                        </ul>
+                        <p>Do podpisów cyfrowych używa się algorytmów asymetrycznych, oznacza to, 
+                        że dla każdego uczestnika komunikacji zostają wygenerowane dwa klucze - publiczny i prywatny. Klucz publiczny - służy weryfikacji podpisu, a prywatny - jego składaniu.</p>
+                        <p>By stworzyć podpis cyfrowy wysyłaną wiadomość należy skonwertować funkcją haszową, a następnie zaszyfrować kluczem prywatnym.</p>
+                        <p>Następnie wiadomość (tekst jawny. Nie musi być ona zaszyfrowana) i podpis wysyłane są do adresata.</p>
+                        <p>Ten odszyfrowuje cyfrowy podpis używając klucza publicznego nadawcy. Posiada teraz wynik funkcji haszującej.</p>
+                        <p>Kolejno otrzymaną wiadomość konwertuje używając tej samej funkcji haszującej.</p>
+                        <p>Jeśli wyniki funkcji zgadzają się, odbiorca może być pewien, że treść podpisanej wiadomości nie zmieniła się od momentu wysłania.</p>
+                    </div>
+                    <div class="col-sm-12 top-buffer text-center">
+                            <img class="img-fluid" src="images/digital-signature.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-topic">
+            <div class="container top-buffer" id="about">
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h2>O stronie</h2>
+                        <p>Strona przygotowana w ramach XI edycji konkursu <i>"Zobaczyć Matematykę"</i>.</p>
+                        <p>Strona ma zachęcić czytającego do dalszego zgłębiania zagadnień kryptografii i cyber-bezpieczeństwa. 
+                        Starałem się przygotować materiał w taki sposób, aby był łatwy do zrozumienia. W tym celu czasami zostały użyte uproszczenia.
+                        Jeśli strona się podobała i chcesz dowiedzieć się więcej w tej dziedzinie, to zapraszam do odnośników w zakładce bibliografia.</p>
+                        <p>Autor: Kacper Gregorowicz kl. 2IT Zespół Szkół Ponadgimnazjalnych Nr 1 w Brzesku</p>
+                    </div>
+                </div>
+                <div id="bibliography" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h2>Bibliografia</h2>
+                        <p><a target="_blank" href="https://www.pcworld.pl/porada/Szyfrowanie-co-warto-o-nim-wiedziec,403898.html">Szyfrowanie – co warto o nim wiedzieć</a></p>
+                        <p><a target="_blank" href="https://www.wikipedia.org">Materiały z Wikipedii</a></p>
+                        <p><a target="_blank" href="http://www.crypto-it.net/pl/index.html">Crypto-IT</a></p>
+                        <p><a target="_blank" href="http://ekryptografia.pl/kryptografia/szyfry-symetryczne/">eKryptografia.pl</a></p>
+                        <p><a target="_blank" href="https://www.youtube.com/watch?v=--tnZMuoK3E">Password Hashing, Salts, Peppers</a></p>
+                        <p><a target="_blank" href="http://enigma.umww.pl">Enigma</a></p>
+                        <p><a target="_blank" href="https://www.youtube.com/watch?v=2BldESGZKB8">What is Hashing? Hash Functions Explained Simply</a></p>
+                        <p><a target="_blank" href="https://www.youtube.com/watch?v=b4b8ktEV4Bg">Hashing Algorithms and Security - Computerphile</a></p>
+                        <p><a target="_blank" href="https://www.youtube.com/watch?v=jhXCTbFnK8o">Cryptography: Crash Course Computer Science #33</a></p>
+                    </div>
+                </div>
+                <div id="software" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h2>Użyte programy i technologie</h2>
+                        <p>HTML</p>
+                        <p>CSS</p>
+                        <p>JavaScript</p>
+                        <p><a target="_blank" href="https://getbootstrap.com">Bootstrap 4.3.1</a></p>
+                        <p><a target="_blank" href="https://jquery.com">jQuery 3.3.1</a></p>
+                        <p><a target="_blank" href="https://code.visualstudio.com">Visual Studio Code</a></p>
+                        <p><a target="_blank" href="https://www.gimp.org">GIMP</a></p>
+                        <p><a target="_blank" href="https://www.draw.io">draw.io</a></p>
+                        <p><a target="_blank" href="https://www.w3schools.com/w3css/">w3.css</a></p>
+                    </div>
+                </div>
+                <div id="pictures" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h2>Użyte zdjęcia</h2>
+                        <p><a target="_blank" href="https://www.wikipedia.org">Zdjęcia zamieszczone na serwisie wikipedia</a></p>
+                        <p><a target="_blank" href="http://ekryptografia.pl/wp-content/uploads/2012/12/szyfrowanie-symetryczne1.gif">Szyfrowanie symetryczne</a></p>
+                        <p><a target="_blank" href="https://pixabay.com/pl/illustrations/haker-hacking-1944688/">Pixabay tło</a></p>
+                        <p><a target="_blank" href="https://pixabay.com/pl/photos/julius-cezar-roman-włochy-rome-2789915/">Pixabay cezar</a></p>
+                        <p><a target="_blank" href="http://enigma.umww.pl/wp-content/uploads/2017/11/Przebieg-pradu.jpg">Enigma przebieg prądu</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+                
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+        </script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/caesar.cipher.js"></script>
+    </body>
+</html>

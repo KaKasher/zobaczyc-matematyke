@@ -1,0 +1,91 @@
+body, html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+p, li, ul, ol, label, option, form {
+    font-size: 18px;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .front-page-bg {
+    background-image: url("../images/lock.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .front-page-txt {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.85);
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .front-page-txt .btn {
+    border-radius: 0;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .front-page-txt .btn:hover {
+    background-color: #555;
+    color: white;
+  }
+
+  .section-topic {
+    margin-top: 40px;
+  }
+
+  .top-buffer {
+    margin-top: 30px;
+  }
+
+  .menu-btn {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.85);
+    color: white;
+    border: 3px solid #f1f1f1;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    padding: 10px 15px;
+    text-align: center;
+  }
+  
+  .menu-btn:hover {
+    background-color: #555;
+    color: white;
+  }
+  
+  .cipher-buttons {
+    color: white;
+    font-weight: bold;
+  }
+
+  #rail-fence-cipher table, th, td {
+    border: 1px solid black;
+  }
+
+  #rail-fence-cipher th, td {
+    padding: 8px;
+  }

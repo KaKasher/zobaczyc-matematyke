@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Algorytmy Genetyczne</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+   </head>
+   <body>
+      <header>
+         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Algorytmy Genetyczne</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="#coToJest">Co to jest?</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Zasada działania
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#inicjalizacja">Inicjalizacja</a>
+                        <a class="dropdown-item" href="#ocena">Ocena</a>
+                        <a class="dropdown-item" href="#selekcja">Selekcja</a>
+                        <a class="dropdown-item" href="#krzyzowanie">Krzyżowanie</a>
+                        <a class="dropdown-item" href="#mutacja">Mutacja</a>
+                        <a class="dropdown-item" href="#powtarzanie">Powtarzanie</a>
+                        <a class="dropdown-item" href="#powtarzanie">Zakończenie działania</a>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#zastosowania">Zastosowania</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#oStronie">O stronie</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+         <section class="jumbotron">
+            <div class="container sekcja-mala">
+               <div class="text-center">
+                  <h1>Algorytmy Genetyczne</h1>
+                  <h3><em>Z czym to się je?</em></h3>
+               </div>
+            </div>
+         </section>
+      </header>
+      <main>
+         <div class="container">
+            <div class="row top-buffer" id="coToJest">
+               <div class="col-lg-12">
+                  <h2>
+                  Czym tak właściwie jest algorytm genetyczny?
+                  <h2>
+               </div>
+               <div class="col-lg-12">
+                  <p>Aby odpowiedzieć na to pytanie, musimy najpierw wiedzieć co to algorytm.
+                     Algorytm to zestaw czynności konieczny do rozwiązania jakiegoś problemu lub osiągnięcia konkretnego celu. 
+                     Algorytm genetyczny jest to metoda optymalizacji bazująca na zasadach genetyki i selekcji naturalnej. Stara się on upodobnić do ludzkiej ewolucji.
+                     Z każdą następną generacją staje się bardziej zbliżony do swojego celu i daje nam lepsze wyniki.
+                  </p>
+               </div>
+            </div>
+            <div class="row top-buffer">
+               <div class="col-lg-4 col-xs-12">
+                  <div class="sekcja">
+                     <h2>
+                     Zasada działania
+                     <h2>
+                     <ol class="list-group">
+                        <li class="list-group-item">Inicjacja początkowej populacji osobników</li>
+                        <li class="list-group-item">Ocena każdego z osobników</li>
+                        <li class="list-group-item">Selekcja najlepszych osobników</li>
+                        <li class="list-group-item">Krzyżowanie osobników i mutacja</li>
+                        <li class="list-group-item">Wracamy do punktu nr. 2</li>
+                     </ol>
+                  </div>
+               </div>
+               <div class="col-lg-8 col-xs-12 diagram">
+                  <img class="img-fluid" src="./img/diagram.png">
+               </div>
+            </div>
+            <div class="row top-buffer" id="inicjalizacja">
+               <div class="col-lg-8">
+                  <img class="img-fluid" src="./img/Mapa1.png">
+               </div>
+               <div class="col-lg-4">
+                  <div class="inicjalizacja sekcja">
+                     <h2 class="text-right">Inicjalizacja</h2>
+                     <p class="text-right">Zadaniem naszego algorytmu będzie znalezienie drogi pomiędzy miastami, tak aby pierwsze miasto było startem i końcem podróży. Im krótsza droga tym lepiej.</p>
+                  </div>
+               </div>
+               <div class="col-lg-12">
+                  <p class="text-center">Tworzymy początkową populację. Miasta w każdej z tras są ułożone losowo i nie mogą się powtarzać.</p>
+               </div>
+               <div class="col-lg-12">
+                  <img class="img-fluid mx-auto d-block" src="./img/DiagramGen0.png">
+               </div>
+            </div>
+            <div class="row top-buffer" id="ocena">
+               <div class="col-lg-4 col-xs-12">
+                  <h2>Ocena</h2>
+                  <p>Każda z tras zostaje oceniona. Sumowane są odległości między połączeniami miast.
+                     Dzięki temu wiemy, która z tras jest najkrótsza. W pierwszej generacji jako iż trasy tworzone są losowo efekty nie są zadawalające.
+                  </p>
+               </div>
+               <div class="col-lg-8 col-xs-12">
+                  <table class="table table-bordered">
+                     <tr>
+                        <th>#</th>
+                        <th>Nazwa Osobnika</th>
+                        <th>Ocena (dystans w km)</th>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>Trasa 1</td>
+                        <td>3821 km</td>
+                     </tr>
+                     <tr>
+                        <td>2</td>
+                        <td>Trasa 2</td>
+                        <td>5213 km</td>
+                     </tr>
+                     <tr>
+                        <td>3</td>
+                        <td>Trasa 3</td>
+                        <td>4853 km</td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <div class="row top-buffer" id="selekcja">
+               <div class="col-lg-12">
+                  <h2>Selekcja</h2>
+                  <p>Teraz gdy już wiemy jak nasze osobniki (trasy) wypadają, musimy wybrać te, które zostaną włączone do naszej grupy rozrodczej.
+                     Ważne aby wybrane zostały osobniki, które zostały ocenione jak najlepiej.
+                  </p>
+                  <p>Mamy parę typów selekcji:</p>
+               </div>
+               <div class="col-lg-4 col-xs-12">
+                  <div class="sekcja-mala">
+                     <h4>Metoda koła ruletki</h4>
+                     <p>Wyobraźmy sobie koło ruletki podzielone na wiele obszarów. Każdy z osobników dostaje własny obszar. 
+                        Im lepiej wypada w ocenie tym większą część dostaje. Następnie kręcimy kołem. 
+                        W zależności gdzie zatrzyma się wskaźnik, dany osobnik dostanie się do grupy rozrodczej. 
+                        Dzięki temu lepsze osobniki mają większą szansę na ich wylosowanie.
+                     </p>
+                  </div>
+               </div>
+               <div class="col-lg-8 col-xs-12">
+                  <img class="img-fluid" src="./img/Ruletka.png">
+               </div>
+               <div class="col-lg-4 col-xs-12">
+                  <h4>Metoda turniejowa</h4>
+                  <p>Populacja dzielona jest na dowolnie liczne grupy. Następnie najlepsze osobniki z grup są wybierane. Proces jest powtarzany, aby wybrać następnego rodzica.</p>
+               </div>
+               <div class="col-lg-4 col-xs-12">
+                  <h4>Metoda rankingowa</h4>
+                  <p>Osobniki układa się w ranking w zależności od ich oceny np. jak w konkursie. Do grupy rozrodczej wchodzi dana ilość najlepszych osobników.
+                     Ta metoda często jest używana gdy wszystkie osobniki z danej populacjii mają podobne wyniki.
+                  </p>
+               </div>
+               <div class="col-lg-4 col-xs-12">
+                  <h4>Metoda losowa</h4>
+                  <p>Osobniki które wejdą do grupy rozrodczej są wybierane losowo. Ocena nie ma tu znaczenia. Ta metoda jest rzadko używana, przez jej małą efektywność.</p>
+               </div>
+            </div>
+            <div class="row top-buffer" id="krzyzowanie">
+               <div class="col-lg-12">
+                  <h2>Krzyżowanie</h2>
+                  <p>Krzyżowanie jest analogiczne do rozmnażania w biologii. Cechy obu rodziców mieszają się ze sobą, tym samym dając nam nowe pokolenie o wspólnych cechach.
+                     Weźmiemy losowy segment genów (miast) o losowej długości z osobnika 1, a resztę dopełnimy genami z osobnika 2, tak aby się nie powtórzyły.
+                  </p>
+               </div>
+               <div class="col-lg-12">
+                  <img class="img-fluid mx-auto d-block" src="./img/Krzyzowanie.png">
+               </div>
+            </div>
+            <div class="row top-buffer" id="mutacja">
+               <div class="col-lg-12">
+                  <h2>Mutacja</h2>
+                  <p>Teraz gdy mamy nowo powstałe osobniki, powinny one mieć cechy wspólne rodziców. Jednak możemy ustalić współczynnik mutacji, który zmieni ich geny.
+                     Mutacja zapewnia różnorodność nowo powstałych osobników.
+                     W naszym przypadku mutacja zamieni pozycje 2 genów między sobą.
+                  </p>
+               </div>
+               <div class="col-lg-12">
+                  <img class="img-fluid mx-auto d-block" src="./img/Mutacja.png">
+               </div>
+            </div>
+            <div class="row top-buffer" id="powtarzanie">
+               <div class="col-lg-4 col-xs-12">
+                  <h2>Powtarzanie</h2>
+                  <p>Proces zostaje powtórzony <em>x</em> razy. Jeśli algorytm został skonstruowany poprawnie, każde następne pokolenia dadzą nam lepsze efekty. Dla nas będzie to coraz krótsza droga.</p>
+               </div>
+               <div class="col-lg-4 col-xs-12">
+                  <h2>Zakończenie działania</h2>
+                  <p>W pewnym momencie działania naszego algorytmu, musimy wiedzieć czy otrzymaliśmy najlepsze możliwe lub wystarczająco dobre rozwiązanie.
+                     Istnieje kilka metod zakańczania działania naszego algorytmu:
+                  </p>
+               </div>
+               <div class="col-lg-4 col-xs-12">
+                  <ul class="list-group">
+                     <li class="list-group-item">Nie ma żadnych popraw przez <em>x</em> generacji</li>
+                     <li class="list-group-item">Gdy osiągniemy maksymalną liczbę generacji</li>
+                     <li class="list-group-item">Gdy osiągniemy wcześniej zdefiniowaną wartość</li>
+                  </ul>
+               </div>
+            </div>
+            <div class="row top-buffer" id="zastosowania">
+               <div class="col-lg-12">
+                  <h2>Zastosowania</h2>
+                  <p>Teraz gdy wiemy już co to algorytmy genetyczne i jak działają, możemy zadać sobie pytanie - <em>No dobra, ale jakie zastosowania mogą mieć w realnym świecie?</em>
+                     - Otóż zastosowań w życiu codziennym jest multum, problemy te są zazwyczaj bardzo złożone.
+                  </p>
+                  <p>Przykłady zastosowań algorytmów genetycznych w realnym świecie:</p>
+               </div>
+               <div class="col-lg-4 col-xs-12 sekcja-mala">
+                  <h4>Planowanie i harmonogramowanie procesów przemysłowych</h4>
+                  <p>Problemy związane z harmonogramowaniem procesów przemysłowych, są zazwyczaj skomplikowane i trudne do rozwiązania.
+                     Algorytm przydziela zasoby do kolekcji zadań, określa kolejność wykonywanych czynności.
+                  </p>
+               </div>
+               <div class="col-lg-4 col-xs-12 sekcja-mala">
+                  <h4>Robotyka</h4>
+                  <p>Algorytm genetyczny może tworzyć projekty robotów, szukać opytmalnych części do danego użytku. Dzięki algorytmowi możemy poznać nowe projekty robotów, które będą nam służyć w przyszłości.</p>
+               </div>
+               <div class="col-lg-4 col-xs-12 sekcja-mala">
+                  <h4>Wyznaczanie trasy podróży</h4>
+                  <p>Tak jak pokazałem w części tłumaczącej zasadę działania algorytmów genetycznych, nasz algorytm może wyszukiwać optymalną trasę podróży.
+                     Dzięki temu unikniemy korków i dotrzemy najszybszą możliwą trasą do celu.
+                  </p>
+               </div>
+               <div class="col-lg-12">
+                  <p>Jak możemy zauważyć, zastosowanie algorytmów genetycznych charakteryzuje się dużą różnorodnością. 
+                     Poza przykładami które wymieniłem istnieje jeszcze wiele innych dziedzin, które wykorzystują algorytmy genetyczne m.in. medycyna, chemia, biotechnologia, branża gier komputerowych.
+                     Jedynym naszym ograniczeniem jest nasza wyobraźnia!
+                  </p>
+               </div>
+            </div>
+            <div class="row top-buffer" id="oStronie">
+               <div class="col-lg-12">
+                  <h2 class="text-center">O stronie</h2>
+                  <p class="text-center">Praca przygotowana na konkurs pt. "Zobaczyć Matematykę"</p>
+                  <p class="text-center">Autor: Kacper Gregorowicz kl. 1IT Zespół Szkół Ponadgimnazjalnych Nr 1 w Brzesku</p>
+               </div>
+               <div class="col-lg-12 sekcja-mala">
+                  <h2>Użyte programy i technologie</h2>
+                  <p>HTML</p>
+                  <p>CSS</p>
+                  <p>JavaScript</p>
+                  <p><a href="https://jquery.com/">jQuery 3.3.1</a></p>
+                  <p>
+                     <a href="https://getbootstrap.com/" target="_blank">
+                        Bootstrap 4.0.0
+                  </p>
+                  <p><a href="https://www.gimp.org/" target="_blank">GIMP</p>
+                  <p><a href="https://www.draw.io/" target="_blank">draw.io</a></p>
+                  <p><a href="https://www.onlinecharttool.com/" target="_blank">Online Chart Tool</a></p>
+                  <p><a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a></p>
+				  <p><a href="https://www.google.pl/maps" target="_blank">Google Maps</a></p>
+               </div>
+               <div class="col-lg-12 sekcja-mala">
+                  <h2>Bibliografia</h2>
+                  <p><a href="https://sound.eti.pg.gda.pl/student/isd/isd03-algorytmy_genetyczne.pdf" target="_blank">Uczenie Maszynowe - Algorytmy Genetyczne Inteligentne systemy decyzyjne</a></p>
+                  <p><a href="https://www.analyticsvidhya.com/blog/2017/07/introduction-to-genetic-algorithm/" target="_blank">Introduction to Genetic Algorithm & their application in data science</a></p>
+                  <p><a href="https://www.tutorialspoint.com/genetic_algorithms/genetic_algorithms_quick_guide.htm" target="_blank">Genetic Algorithms - Quick Guide</a></p>
+                  <p><a href="https://www.youtube.com/watch?v=XP8R0yzAbdo" target="_blank">Genetic Algorithm Tutorial - How to Code a Genetic Algorithm</a></p>
+                  <p><a href="http://zeszyty-naukowe.wwsi.edu.pl/zeszyty/zeszyt1/Algorytmy_Ewolucyjne_I_Ich_Zastosowania.pdf" target="_blank">Algorytmy ewolucyjne i ich zastosowania</a></p>
+                  <p><a href="https://www.brainz.org/15-real-world-applications-genetic-algorithms/" target="_blank">15 Real-World Applications of Genetic Algorithms</a></p>
+                  <p><a href="https://pixabay.com/pl/dna-string-biologia-3d-1811955/" target="_blank">Pixabay: Darmowe obrazy</a></p>
+                  <p><a href="" target="_blank"></a></p>
+               </div>
+            </div>
+         </div>
+      </main>
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/bootstrap.js"></script>
+   </body>
+</html>

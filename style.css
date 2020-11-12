@@ -1,0 +1,25 @@
+.bg-black {
+    background-color: black;
+}
+
+body {
+    background-color: black;
+}
+
+.front-page-txt {
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+  }
+
+
+a { 
+    text-decoration: none;
+}

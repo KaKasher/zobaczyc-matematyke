@@ -1,0 +1,524 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name=viewport content="width=device-width,initial-scale=1">  
+        <meta author="Kacper Gregorowicz">
+        <link rel="stylesheet" type="text/css" href="./css/w3.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <title>Fraktale - Matematyczne Piękno</title>
+    </head>
+    <body>
+        <div class="w3-sidebar w3-bar-block w3-border-right w3-animate-left w3-amber" style="display:none" id="mySidebar">
+            <button onclick="w3_close()" class="w3-bar-item w3-large">Zamknij &times;</button>
+            <a href="#basics" class="w3-bar-item w3-button w3-hover-orange">Czym są fraktale</a>
+            <a href="#basic-fractals" class="w3-bar-item w3-button w3-hover-orange">Klasyczne Fraktale</a>
+            <a href="#sierpinski-triangle" class="w3-bar-item w3-button w3-hover-orange">Trójkąt Sierpińskiego</a>
+            <a href="#cantor-set" class="w3-bar-item w3-button w3-hover-orange">Zbiór Cantora</a>
+            <a href="#koch-curve" class="w3-bar-item w3-button w3-hover-orange">Krzywa Kocha</a>
+            <a href="#pythagoras-tree" class="w3-bar-item w3-button w3-hover-orange">Drzewo pitagorejskie</a>
+            <a href="#mandelbrot-set" class="w3-bar-item w3-button w3-hover-orange">Zbiór Mandelbrota</a>
+            <a href="#mandel-gallery" class="w3-bar-item w3-button w3-hover-orange">Mandelbrot Galeria</a>
+            <a href="#mandel-app" class="w3-bar-item w3-button w3-hover-orange">Przybliż zbiór Mandelbrota</a>
+            <a href="#julia-set" class="w3-bar-item w3-button w3-hover-orange">Zbiór Julii</a>
+            <a href="#julia-app" class="w3-bar-item w3-button w3-hover-orange">Poeksperymentuj z parametrem c</a>
+            <a href="#in-nature" class="w3-bar-item w3-button w3-hover-orange">Fraktale w przyrodzie</a>
+            <a href="#about" class="w3-bar-item w3-button w3-hover-orange">O stronie</a>
+            <a href="#bibliography" class="w3-bar-item w3-button w3-hover-orange">Biblografia</a>
+            <a href="#software" class="w3-bar-item w3-button w3-hover-orange">Programy i technologie</a>
+            <a href="#pictures" class="w3-bar-item w3-button w3-hover-orange">Użyte zdjęcia</a>
+        </div>
+        <div class="front-page-bg"></div> 
+        <div class="front-page-txt">
+            <h1>Fraktale</h1>
+            <h2>Matematyczne piękno</h2>
+            <a href="#basics" class="btn">Start!</a>
+        </div>
+        <button class="menu-btn" onclick="w3_open()">Menu</button>
+
+        <!-- Co to fraktale -->
+        <div class="section-topic">
+            <div class="container" id="basics">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>Czym tak naprawdę są fraktale?</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 top-buffer">
+                        <br>
+                        <p>Matematycy unikają ścisłego podawania definicji fraktalu, przez ich wielką różnorodność.</p>
+                        <p>Jednak w uproszczeniu fraktal, jest figurą, w której część figury jest <b>podobna do całości</b>. Jest samopodobny.</p>
+                        <p>Cechy fraktalu podawane przez matematyków:</p>
+                        <ul>
+                            <li>ma nietrywialną strukturę w każdej skali</li>
+                            <li>struktura ta nie daje się łatwo opisać w języku tradycyjnej geometrii euklidesowej</li>
+                            <li>jest samopodobny, jeśli nie w sensie dokładnym, to przybliżonym</li>
+                            <li>ma naturalny („poszarpany”, „kłębiasty” itp.) wygląd</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="images/julia.png" class="img-fluid">
+                        <p>(Zbiór Julii)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Klasyczne fraktale -->
+        <div class="section-topic">
+            <div class="container" id="basic-fractals">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>Klasyczne fraktale</h1>
+                    </div>
+                </div>
+
+                <!-- Trójkąt Sierpińskiego -->
+                <div id="sierpinski-triangle" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Trójkąt Sierpińskiego</h3>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p>Jest to jeden z najprostszych fraktali. Jego konstrukcja została podana przez polskiego matematyka Wacława Sierpińskiego w 1915.</p>
+                        <p>Tworzymy go rysując trójkąt równoboczny, łączymy środki boków trójkąta, dzieląc go na 4 trójkąty. Następnie usuwamy trójkąt środkowy i powtarzamy operację na pozostałych 3 trójkątach.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid left-buffer" src="images/SierpinskiTriangle.PNG" width="300" height="300">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <div class="geoGeb top-buffer" id="geoSierp">
+                            <button onclick="showSierp()" id="btnSierp" class="btn btn-warning btn-lg btn-block">Kliknij aby sprawdzić konstrukcję</button>
+                            <script>
+                                function showSierp() {
+                                    document.getElementById('geoSierp').innerHTML = String.raw`<iframe scrolling="no" title="Sierpinski Triangle" src="https://www.geogebra.org/material/iframe/id/d2g37vfe/width/700/height/600/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="700px" height="600px"> </iframe>`;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zbiór Cantora -->
+                <div id="cantor-set" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Zbiór Cantora</h3>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p>Jest to podzbiór prostej rzeczywistej opisany w 1883 przez niemieckiego matematyka Georga Cantora. Zbiór ten jest najprostszym przykładem fraktala</p>
+                        <p>Konstrukcja zbioru Cantora:</p>
+                        <ul>
+                            <li>Zaczynamy od narysowania odcinka o długości 1</li>
+                            <li>Następnie dzielimy ten odcinek na 3 równe części</li>
+                            <li>Usuwamy środkowy odcinek. Mamy teraz 2 odcinki o długości $\frac 13$</li>
+                            <li>Czynność powtarzamy dla następnych odcinków</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/cantorSet.png">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <div class="geoGeb top-buffer" id="geoCantor">
+                            <button onclick="showCantor()" id="btnCantor" class="btn btn-warning btn-lg btn-block">Kliknij aby sprawdzić konstrukcję</button>
+                            <script>
+                                function showCantor() {
+                                    document.getElementById('geoCantor').innerHTML = String.raw`<iframe scrolling="no" title="" src="https://www.geogebra.org/material/iframe/id/kARQK5NK/width/557/height/530/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="557px" height="530px" style="border:0px;"> </iframe>`;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Krzywa Kocha -->
+                <div id="koch-curve" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Krzywa Kocha</h3>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p>Jest to krzywa fraktalna. Jest nieskończenie długa, ale mieści się na skończonej powierzchni. Po raz pierwszy została opisana przez Helgego von Kocha w roku 1904.</p>
+                        <p><b>Kroki tworzenia krzywej Kocha:</b></p>
+                        <p><b>Krok 0</b><br/>Krzywa Kocha w kroku zerowym $(k=0)$ jest odcinkiem. Zostanie on podzielony na 3 równe części, a środkową zastąpią dwa odcinki długości $\frac 13 l$ nachylone względem niej pod kątem 60°. Wraz z wyciętym fragmentem mogłyby one utworzyć trójkąt równoboczny.</p>
+                        <p><b>Krok 1</b><br/>Krzywa Kocha w kroku pierwszym $(k=1)$, po transformacji zawiera 4 odcinki, każdy równy $\frac 13 l$. W kolejnym kroku każdy z tych odcinków ponownie zostanie podzielony na 3 części, a środkową znów zastąpimy dwoma odcinkami.</p>
+                        <p><b>Krok 2</b><br/>Krzywa Kocha w kroku drugim $(k=2)$ zawiera już 16 odcinków, każdy o długości $\frac 19 l$. Czynność możemy powtarzać w nieskończoność.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/kochSnowflake.png">
+                        <p>(Płatek kocha powstały przez połączenie trzech krzywych)</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="geoGeb top-buffer" id="geoKoch">
+                            <button onclick="showKoch()" id="btnKoch" class="btn btn-warning btn-lg btn-block">Kliknij aby sprawdzić konstrukcję</button>
+                            <script>
+                                function showKoch() {
+                                    document.getElementById('geoKoch').innerHTML = String.raw`<iframe scrolling="no" title="Koch Curve" src="https://www.geogebra.org/material/iframe/id/Vwc7s7mG/width/877/height/469/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="877px" height="469px" style="border:0px;"> </iframe>`;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drzewo pitagorejskie -->
+                <div id="pythagoras-tree" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Drzewo pitagorejskie</h3>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p>Jest to fraktal zbudowany z kwadratów, który swym kształtem przypomina drzewo. Swoją nazwę zawdzięcza temu, że na każdym etapie konstrukcji, ilustruje graficznie twierdzenie Pitagorasa.</p>
+                        <p><b>Konstrukcja fraktalu:</b></p>
+                        <ol>
+                            <li>Konstrukcja fraktala zaczyna się od narysowania dowolnego kwadratu.</li>
+                            <li>Następnie dorysowujemy do niego trójkąt prostokątny, w którym przeciwprostokątna jest górną krawędzią tego kwadratu.</li>
+                            <li>Na przyprostokątnych trójkąta budujemy kolejne kwadraty.</li>
+                            <li>Powtarzamy powyższe operacje 2 i 3.</li>
+                        </ol>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/pythagorasTree.png">
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="geoGeb top-buffer" id="geoPyth">
+                            <button onclick="showPyth()" id="btnPyth" class="btn btn-warning btn-lg btn-block">Kliknij aby sprawdzić konstrukcję</button>
+                            <script>
+                                function showPyth() {
+                                    document.getElementById('geoPyth').innerHTML = String.raw`<iframe scrolling="no" title="Pythagoras Tree" src="https://www.geogebra.org/material/iframe/id/HFMGS3Kz/width/1157/height/673/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="1157px" height="673px" style="border:0px;"> </iframe>`;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zbiór Mandelbrota -->
+        <div class="section-topic">
+            <div class="container" id="mandelbrot-set">
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h1>Zbiór Mandelbrota</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <p>Według definicji:<br/>"Zbiór Mandelbrota (żuk Mandelbrota) – <b>podzbiór płaszczyzny zespolonej</b>, którego brzeg jest jednym z najbardziej znanych fraktali"</p>
+                        <p>Żeby jednak zrozumieć tą definicję, musimy poznać parę pojęć</p>
+
+                    </div>
+
+                    <!-- Jednostka urojona i liczba zespolona -->
+                    <div class="col-sm-12">
+                        <p><b>Jednostka urojona</b> - liczba, która po podniesieniu do kwadratu daje wartość rzeczywistą ujemną. $$i^2 = -1$$ a więc, $$i = \sqrt -1$$</p>
+                        <p>Nie znajdziemy naszej liczby $i$ na osi liczbowej, ponieważ reprezentuje ona liczby rzeczywiste</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><b>Liczba zespolona</b> - składa się z części rzeczywistej i urojonej. Każdą liczbę zespoloną $z$ można zapisać w postaci $$z = a + bi$$ gdzie $a$ i $b$ są pewnymi liczbami rzeczywistymi $(a, b \in \Bbb R)$,<br/> 
+                        a $i$ jest jednostką urojoną.</p>
+                        <p>Liczby zespolone, choć mogą wydawać się dziwne, mają zastosowania w wielu dziedzinach np. chemii, fizyce, medycynie.
+                        Pierwiastek z liczby ujemnej nie jest pomysłem pozbawionym logiki, ponieważ pozwala wykonać wiele ważnych obliczeń, których wynik jest "normalną" liczbą rzeczywistą.</p>
+                        <p><b>Płaszczyzna zespolona</b> - jest podobna do znanego nam układu współrzędnych kartezjańskich, jednak mamy tutaj 2 osi - oś urojoną i oś rzeczywistą.</p>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <img class="img-fluid" src="images/complex2.png">
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid" src="images/cartesian.png" width="350">
+                        <p>(układ współrzędnych kartezjańskich)</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid top-buffer" src="images/complex.png" width="350">
+                        <p>(płaszczyzna zespolona)</p>
+                    </div>
+                </div>
+
+                <!-- Przeanalizowanie zbioru -->
+                <div class="row top-buffer">
+                    <div class="col-sm-12 top-buffer">
+                        <p>A więc, skoro zbiór Mandelbrota to <b>podzbiór</b> płaszczyzny zespolonej, możemy sprawdzić czy dany punkt, należy do tego podzbioru.</p>
+                        <p>Zbiór może zostać opisany tym równaniem rekurencyjnym$${\displaystyle {\begin{cases}z_{0}=0,\\z_{n+1}=z_{n}^{2}+p.\end{cases}}}$$ gdzie $p$ oznacza dowolną liczbę zespoloną.</p>
+                        <p>Jeśli wynik <b>nie dąży</b> do nieskończoności to dany punkt należy do zbioru</p>
+                        <p>Sprawdźmy czy dana liczba należy do zbioru Mandelbrota. Jako $p$ - naszą liczbę zespoloną, weźmy $1$ (Można zapisać jako $1 + 0i$)<br/>Zaczynamy z $z = 0$</p>
+                        <p>$z_0 = 0^2 + 1 = 1$, Wynik $1$ staje się nową wartością $z$</p>
+                        <p>$z_1 = 1^2 + 1 = 2$, Wynik $2$ staje się nową wartością $z$ itd.</p>
+                        <p>$z_2 = 2^2 + 1 = 5$</p>
+                        <p>$z_3 = 5^2 + 1 = 26$</p>
+                        <p>Jak widać wynik ciągle rośnie i będzie rósł, aż do nieskończoności. A więc $p = 1$ nie należy do zbioru Mandelbrota</p>
+                        <br/><br/>
+                        <p>Sprawdźmy dla innej liczby</p>
+                        <p>$p = -1$, inaczej $p = -1 + 0i$</p>
+                        <p>$z_0 = 0^2 + (-1) = -1$</p>
+                        <p>$z_1 = (-1)^2 + (-1) = 0$</p>
+                        <p>$z_2 = 0^2 + (-1) = -1$</p>
+                        <p>Tutaj możemy zauważyć, że wynik będzie równy $0$ lub $-1$, czyli <b>nie dąży</b> on do nieskończoności</p>
+                        <p>A więc $p = -1$ należy do zbioru Mandelbrota</p>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Gdy przeprowadzimy obliczenia dla odpowiednio dużej próbki liczb zespolonych, otrzymamy taki wykres (każdy czarny punkt oznacza liczbę należącą do zbioru Mandelbrota)</p>
+                        <img class="img-fluid" src="images/mandelset.png">
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                    <p>Wszystko co należy do zbioru Mandelbrota musi być w odległości $2$ od środka płaszczyzny. Możemy pokolorować liczby <b>nie należące</b> do zbioru w owy sposób:
+                    W zależności od tego, jak szybko dana liczba będzie większa od $2$, możemy przypisać jej inny kolor. Np. gdy liczba nie należy do zbioru po 10 "krokach" (iteracjach) równania, dajemy temu punktowi inny odcień,
+                    niż jeśli liczba nie należy do zbioru po 50 krokach.</p>
+                    <p>Przykładowy efekt takiego zabiegu</p>
+                    <img class="img-fluid" src="images/mandelbrotSet.jpg">
+                    </div>
+
+                    <!-- Zoom zbioru -->
+                    <div class="col-sm-12 top-buffer">
+                        <center>
+                            <p>Dzięki komputerom możemy obliczliczyć bardziej dokładnie punkty i przynbliżyć obraz w różnych jego częściach</p>
+                            <img class="img-fluid" src="images/mandelbrotZoom.gif" width="500">
+                        </center>
+                    </div>
+
+                    <!-- Galeria zbioru Mandelbrota -->
+                    <div class="col-sm-12 top-buffer" id="mandel-gallery">
+                        <h3>Galeria różnych części, przybliżeń zbioru</h3>
+                        <img class="img-fluid" src="images/mandel1.jpg">
+                        <img class="img-fluid" src="images/mandel2.jpg">
+                        <img class="img-fluid" src="images/mandel3.jpg">
+                        <img class="img-fluid" src="images/mandel4.jpg">
+                        <img class="img-fluid" src="images/mandel5.jpg">
+                        <img class="img-fluid" src="images/mandel6.jpg">
+                        <img class="img-fluid" src="images/mandel7.jpg">
+                        <img class="img-fluid" src="images/mandel8.jpg">
+                        <img class="img-fluid" src="images/mandel9.jpg">
+                    </div>
+
+                    <!-- Przybliżanie zbioru Mandelbrota -->
+                    <div class="col-sm-12 top-buffer" id="mandel-app">
+                        <h3>Przybliż zbiór Mandelbrota</h3>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <canvas id="canvas" width="512" height="512">
+                            Twoja przeglądarka nie wspiera HTML5 Canvas.
+                        </canvas>
+                        <script src="js/mandelbrot.js" type="text/javascript"></script>
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p>
+                            <br>
+                            <b>Sterowanie klawiszami:</b> 
+                            <br>
+                            <b>p: przybliż</b> 
+                            <br>
+                            <b>o: oddal</b> 
+                            <br>
+                            <b>a: przesuń w lewo</b> 
+                            <br>
+                            <b>d: przesuń w prawo</b> 
+                            <br>
+                            <b>w: przesuń do góry</b> 
+                            <br>
+                            <b>s: przesuń na dół</b>
+                        </p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zbiór Julii -->
+        <div class="section-topic">
+            <div class="container top-buffer" id="julia-set">
+
+                <!-- Wyjaśnienie zbioru Julii -->
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h1>Zbiór Julii</h1>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Zbiór Julii - tak jak zbiór Mandelbrota, jest podzbiorem płaszczyzny zespolonej. Nazwa zbioru pochodzi od nazwiska francuskiego matematyka Gastona Julii.</p>
+                        <p>Zbiór tworzą te punkty $p$ dla których ciąg opisany rówaniem rekurencyjnym:$${\displaystyle z_{0}=p,}$$ $${\displaystyle z_{n+1}=z_{n}^{2}+c}$$ nie dąży do nieskończoności, gdzie $c$ to liczba zespolona będąca parametrem zbioru</p>
+                        <p>Jak widać rówanie jest bardzo podobne do równania którego używaliśmy do obliczania zbioru Mandelbrota. Jednak tym razem $c$ jest <b>stałe</b>, a zmieniamy tylko parametr początkowy równania.
+                        Wcześniej zaczynaliśmy z $z_0 = 0$, a teraz jest ono równe $p$, czyli punktowi któremu chcemy sprawdzić, czy należy do zbioru.</p>
+                        <p>Podobnie jak wcześniej możemy przeprowadzić obliczenia dla dużej próbki liczb, kolorując te należące do zbioru Julii na czarno, a nie należące na inny kolor. Poniżej zbiór Julii dla $c = -0,73 + 0,19i$</p>
+                        <img class="img-fluid" src="images/juliaSet.png">
+                    </div>
+                </div>
+
+                <!-- Aplikacja zbiór Julii -->
+                <div class="row top-buffer" id="julia-app">
+                    <div class="col-sm-12 top-buffer">
+                        <h3>Poeksperymentuj z parametrem $c$</h3>
+                    </div>
+                    <div class="col-sm-6" id="julia-col">
+                        <!-- Julia 
+                        (c) 2011 by Tomasz Lubinski 
+                        www.algorytm.org -->    
+
+                        <script src="js/julia.js" type="text/javascript" charset="utf-8"></script>
+                        <script type="text/javascript">
+                           function update_params() {
+                             c_re = parseFloat(document.params.param_c_re.value);
+                             c_im = parseFloat(document.params.param_c_im.value);
+                         };
+                           window.onload = function () {
+                               update_params();
+                               initializeFractal();
+                           };
+                        </script>
+
+                        <canvas id="canvasJulia" width="500" height="400" style="position: relative"></canvas>
+
+                    </div>
+                    <div class="col-sm-6 top-buffer">
+                        <p><b>Zaznaczając</b> obszar obrazu powiększysz go.<br/><b>Kliknięcie prawym przyciskiem myszy</b> ponownie pokaże cały zbiór.<br/>Po wpisaniu części parametru w pola (używaj kropek nie przecinków), kliknij aktualizuj</p>
+                        <p>Przykładowy parametr $c = -0.73 + 0.19i$</p>
+                        <form id="form-julia" name="params" action="" method="GET">
+                            <div class="form-group row form-inline">
+                                <p>Część rzeczywista parameteru $c$:</p>
+                                <input class="form-control" id="form-r" type="text" size="4" value="-0.73" name="param_c_re">
+                            </div>
+                            <div class="form-group row form-inline">
+                                <p>Część urojona parameteru $c$:</p>   
+                                <input class="form-control" id="form-i" type="text" size="4" value="0.19" name="param_c_im">
+                            </div>
+                            <input class="btn btn-info" id="form-btn" type="button" value="Aktualizuj" onClick="update_params(); renderFractal();">
+                        </form>
+                        <h4>Parametry warte sprawdzenia:</h4>
+                        <p>$c = -0.4 + 0.6i$</p>
+                        <p>$c = 0.285 + 0.01i$</p>
+                        <p>$c = -0.8 + 0.156i$</p>
+                        <p>$c = i$</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fraktale w przyrodzie -->
+        <div class="section-topic">
+            <div class="container top-buffer" id="in-nature">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>Fraktale w przyrodzie</h1>
+                        <p>Chociaż fraktale mogą kojarzyć się tylko z kolorowymi, abstrakcyjnymi obrazami, to nie jest to wszystko. Fraktale możemy także zauważyć w otaczającym nas świecie.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Płatek śniegu</p>
+                        <img class="img-fluid" src="images/snowflake.jpg">
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Kalafior Romanesco</p>
+                        <img class="img-fluid" src="images/romanesco.jpg">
+                    </div> 
+                </div>
+                <div class="row top-buffer">
+                    <div class="col-sm-6">
+                        <p>Aloes</p>
+                        <img class="img-fluid" src="images/aloe.jpg">
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Figura Lichtenberga</p>
+                        <img class="img-fluid" src="images/lichtenberg.jpg">
+                    </div> 
+                </div>
+                <div class="row top-buffer">
+                    <div class="col-sm-6">
+                        <p>Liście paproci</p>
+                        <img class="img-fluid" src="images/paproc.jpg">
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Delta rzeki</p>
+                        <img class="img-fluid" src="images/delta.jpg">
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <!-- O stronie -->
+        <div class="section-topic">
+            <div class="container top-buffer" id="about">
+                <div class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h1>O stronie</h1>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>Strona przygotowana w ramach XII edycji konkursu <i>"Zobaczyć Matematykę"</i>.</p>
+                        <p>Strona ma przedstawić odbiorcy podstawowe pojęcia związane z fraktalami. 
+                        Starałem się przygotować materiał w taki sposób, aby był jak najprostszy do zrozumienia. W tym celu czasami zostały użyte uproszczenia.
+                        Do prawidłowego działania strony, potrzebny jest dostęp do internetu.</p>
+                        <p>Autor: Kacper Gregorowicz kl. 3IT Zespół Szkół Ponadgimnazjalnych Nr 1 w Brzesku</p>
+                    </div>
+                </div>
+
+                <!--  Bibliografia  -->
+                <div id="bibliography" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h2>Bibliografia</h2>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p><a target="_blank" href="http://www.bochenia.pl/w-kierunku-madrosci/2012/grudzien/fraktale-co-to-takiego.html">Fraktale co to takiego?</a></p>
+                        <p><a target="_blank" href="https://www.szkolnictwo.pl/szukaj,Fraktal">Szkolnictwo - fraktal</a></p>
+                        <p><a target="_blank" href="https://pl.wikipedia.org/wiki/Wikipedia:Strona_główna">Artykuły serwisu wikipedia</a></p>
+                        <p><a target="_blank" href="http://www.mini.pw.edu.pl/miniwyklady/minkowski/zbior_Cantora.html">Sposób konstrukcji zbioru Cantora</a></p>
+                        <p><a target="_blank" href="https://mattomatti.com/pl/p04li">Matto Matti - Krzywa Kocha</a></p>
+                        <p><a target="_blank" href="https://pitagoras2.blogspot.com/p/drzewo-pitagorejskie.html">Drzewo pitagorejskie</a></p>
+                        <p><a target="_blank" href="https://www.youtube.com/watch?v=MwjsO6aniig">The Mandelbrot Set</a></p>
+                        <p><a target="_blank" href="https://www.granicenauki.pl/gdzie-jest-zbior-mandelbrota-26869">Granice Nauki - Gdzie jest zbiór Mandelbrota?</a></p>
+                        <p><a target="_blank" href="https://obliczone.pl/wzory-i-własności/636-liczby-zespolone">Liczby zespolone - podstawowe wzory i własności</a></p>
+                        <p><a target="_blank" href="https://www.matmana6.pl/definicja-i-interpretacja-geometryczna-liczby-zespolonej">Liczba zespolona - podstawowe pojęcia</a></p>
+                        <p><a target="_blank" href="http://www.zenker.poznan.pl/adam/jset.html">Zbiór Julii</a></p>
+                    </div>
+                </div>
+                <div id="software" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h2>Użyte programy i technologie</h2>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p>HTML</p>
+                        <p>CSS</p>
+                        <p>JavaScript</p>
+                        <p><a target="_blank" href="https://getbootstrap.com">Bootstrap 4.3.1</a></p>
+                        <p><a target="_blank" href="https://jquery.com">jQuery 3.3.1</a></p>
+                        <p><a target="_blank" href="https://code.visualstudio.com">Visual Studio Code</a></p>
+                        <p><a target="_blank" href=https://www.mathjax.org">MathJax</a></p>
+                        <p><a target="_blank" href="https://www.w3schools.com/w3css/">w3.css</a></p>
+                        <p><a target="_blank" href="https://www.geogebra.org">GeoGebra</a></p>
+                        <p><a target="_blank" href="https://www.geogebra.org/m/hh9mnbcr">GeoGebra - Sierpinski Triangle</a></p>
+                        <p><a target="_blank" href="https://www.geogebra.org/m/kARQK5NK">GeoGebra - Cantor Set</a></p>
+                        <p><a target="_blank" href="https://www.geogebra.org/m/ngmSfbj6">GeoGebra - Koch Curve</a></p>
+                        <p><a target="_blank" href="https://www.geogebra.org/m/HFMGS3Kz">GeoGebra - Pythagoras Tree</a></p>
+                        <p><a target="_blank" href="https://code.activestate.com/recipes/580804-interactive-mandelbrot-fractal-using-html5-canvas/">Interactive Mandelbrot Fractal</a></p>
+                        <p><a target="_blank" href="http://www.algorytm.org/fraktale/zbior-julii.html">Tomasz Lubiński - Zbiór Julii algorytm</a></p>
+                        <p><a target="_blank" href=""></a></p>
+                    </div>
+                </div>
+                <div id="pictures" class="row">
+                    <div class="col-sm-12 top-buffer">
+                        <h2>Użyte zdjęcia</h2>
+                    </div>
+                    <div class="col-sm-12 top-buffer">
+                        <p><a target="_blank" href="https://www.wikipedia.org">Zdjęcia zamieszczone na serwisie wikipedia</a></p>
+                        <p><a target="_blank" href="http://georgcantorbyelithompson.blogspot.com/2015/02/the-cantor-set.html">Zbiór Cantora</a></p>
+                        <p><a target="_blank" href="https://pixabay.com/pl/illustrations/alchemia-kalejdoskop-wzór-ozdoba-2799370/">Pixabay tło</a></p>
+                        <p><a target="_blank" href="https://www.matmana6.pl/zdjecia/studia/liczby_zespolone/definicja_i_interpretacja_geometryczna_liczby_zespolonej_1.png">Płaszczyzna Zespolona</a></p>
+                        <p><a target="_blank" href="https://www.matmana6.pl/zdjecia/studia/liczby_zespolone/definicja_i_interpretacja_geometryczna_liczby_zespolonej_2.png">Płaszczyzna Zespolona</a></p>
+                        <p><a target="_blank" href="https://pixabay.com/pl/photos/romanesco-brokuł-romanesco-broccoli-89110/">Kalafior Romanesco</a></p>
+                        <p><a target="_blank" href="https://pixabay.com/pl/photos/aloes-soczysty-aloes-polyphylla-510113/">Aloes</a></p>
+                        <p><a target="_blank" href="https://pixabay.com/pl/photos/paproć-charakter-zielony-roślin-1105988/">Paproć</a></p>
+                        <p><a target="_blank" href="https://pixabay.com/pl/photos/widok-z-lotu-ptaka-obraz-satelitarny-11102/">Delta rzeki</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+                
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+        </script>
+        <script>
+            MathJax = {
+              tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+              }
+            };
+        </script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+    </body>
+</html>
